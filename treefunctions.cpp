@@ -143,6 +143,11 @@ Node* searchNodeBSF(Node* startingNode, int iData)
     {
         insertEnd(&lista_busca, head_v->iPayload);
         current = searchNode(startingNode, head_v->iPayload);
+        if(current->iPayload == iData)
+        {
+        cout << "nó encontrado: " << current << endl;
+        return current;
+        }
         
         
         if (current->ptrLeft != nullptr)
@@ -159,9 +164,6 @@ Node* searchNodeBSF(Node* startingNode, int iData)
         
     }
     
-    Node* aux = searchNodebyValue(&lista_busca, iData);
-    cout << "Nó encontrado! (" << aux << ")" << endl;
-    return aux;
 }
 
 
