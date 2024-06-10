@@ -126,6 +126,43 @@ void traversePostOrder(Node* ptrStartingNode)
 
 //_____________________________________________________________________________
 
+Node* searchNodeBSF(Node* startingNode, int iData)
+{
+    Node* lista_busca = nullptr;
+    Node* head_v = nullptr;
+    Node* current = startingNode;
+    if (startingNode == nullptr) 
+    {   
+        cout << "Não foi possível encontrar o nó" << endl;
+        return nullptr;
+    }
+    
+    insertEnd(&head_v, startingNode->iPayload);
+    
+    while(head_v != nullptr)
+    {
+        insertEnd(&lista_busca, head_v->iPayload);
+        current = searchNode(startingNode, head_v->iPayload);
+        
+        
+        if (current->ptrLeft != nullptr)
+        {
+            insertEnd(&head_v, current->ptrLeft->iPayload);
+        }
+        
+         if (current->ptrRight != nullptr)
+        {
+            insertEnd(&head_v, current->ptrRight->iPayload);
+        }
+        
+        deleteNote(&head_v, head_v);
+        
+    }
+    
+    Node* aux = searchNodebyValue(&lista_busca, iData);
+    cout << "Nó encontrado! (" << aux << ")" << endl;
+    return aux;
+}
 
 
 

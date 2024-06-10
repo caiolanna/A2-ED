@@ -15,3 +15,4 @@ void traversePreOrder(Node*);
 void traverseInOrder(Node*);
 void traversePostOrder(Node*);
 
+Node* searchNodeBSF(Node*, int);

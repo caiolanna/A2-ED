@@ -119,7 +119,7 @@ int main()
     //Converte pra nanosegundos.
     long long resultadoNano = std::chrono::duration_cast<std::chrono::nanoseconds>(end).count();
     
-    cout << "TEMPO DE INSERÇÃO DOS 100 ELEMENTOS DA ÁRVORE: " << resultadoNano << endl;
+    cout << "TEMPO DE INSERÇÃO DOS 100 ELEMENTOS DA ÁRVORE (nanosegundos): " << resultadoNano << endl;
     
     //BSF
     cout << "BFS Traversal: ";
@@ -355,6 +355,33 @@ int main()
     long long resultadoNano_3 = std::chrono::duration_cast<std::chrono::nanoseconds>(end_3).count();
     
     cout << "TEMPO DE INSERÇÃO DOS 100 ELEMENTOS DA LISTA (INSERINDO NO INÍCIO): " << resultadoNano_3 << endl;
+    //________________________________________________________________________________________________________________//
+    cout << "=======================================================================================" << endl;
+    
+    auto start_4 = std::chrono::high_resolution_clock::now();
+    cout << "busca na árvore utilizando BFS" << endl;
+    searchNodeBSF(root, 360);
+    auto end_4 = std::chrono::high_resolution_clock::now() - start_4;
+    long long resultadoNano_4 = std::chrono::duration_cast<std::chrono::nanoseconds>(end_4).count();
+    cout << "Tempo para busca no BFS do nó 360: " << resultadoNano_4 << " nanoseconds" << endl;
+    
+    
+    cout << "=======================================================================================" << endl;
+    
+    
+    auto start_5 = std::chrono::high_resolution_clock::now();
+    cout << "busca na árvore utilizando DFS" << endl;
+    searchNode(root, 360);
+    auto end_5 = std::chrono::high_resolution_clock::now() - start_5;
+    long long resultadoNano_5 = std::chrono::duration_cast<std::chrono::nanoseconds>(end_5).count();
+    cout << "Tempo para busca no DFS do nó 360: " << resultadoNano_5 << " nanoseconds" << endl;
+    
+    
+    
+    
+    
+    
+    cout << "=======================================================================================" << endl;
     
     
     cout << "Tree Height: " << treeHeight(root) << endl;
