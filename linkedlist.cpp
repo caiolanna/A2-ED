@@ -5,6 +5,34 @@
 
 using namespace std;
 
+
+//Função que mostra a lista.
+void displayList(Node* node)
+{
+    if (node == nullptr)
+    {
+        cout << "displayList: lista vazia" << endl;
+        return;
+    }
+
+    if (node->ptrLeft != nullptr)
+    {
+        cout << "displayList: node esta no meio ou no fim da lista." << endl;
+    }
+
+    Node* temp = node;
+
+    cout << "PayLoad: ";
+
+    while (temp != nullptr)
+    {
+        cout << temp->iPayload << " ";
+        temp = temp->ptrRight;
+    }
+
+    cout << endl;
+}
+
 //DELETAR Node
 
 void deleteNote(Node** head, Node* ptrDelete)
@@ -97,4 +125,45 @@ void insertEnd(Node** head, int iPayload)
 
     newNode->ptrLeft = temp; //NEW NODE APONTA PARA O FIM DA LISTA.
     temp->ptrRight = newNode;
+}
+
+
+
+void selectionSort(Node** head) 
+{
+    if(*head == nullptr)
+    {
+        cout << "Lista vazia" << endl;
+        return;
+    }
+    
+    Node* sortedList = nullptr; //criando o ponteiro para a lista ordenada
+    Node* current = *head;
+    Node* Aux = current->ptrRight;
+    
+    while(Aux != nullptr)
+    {
+    
+    while (current != nullptr)
+    {
+        if(current->iPayload <= Aux->iPayload)
+        {
+            Aux = current;
+            current = current->ptrRight;
+        } else {
+        current = current->ptrRight;
+        
+        }
+    }
+    
+    insertEnd(&sortedList, Aux->iPayload);
+    deleteNodebyValue(head, Aux->iPayload);
+    current = *head;
+    Aux = current->ptrRight;
+    }
+    
+    insertEnd(&sortedList, current->iPayload);
+    
+    
+    (*head) = sortedList;
 }
