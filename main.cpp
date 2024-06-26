@@ -388,35 +388,70 @@ int main()
     
     cout << "=======================================================================================" << endl;
     cout << "=======================================================================================" << endl;
-    cout << "===============================SORT PARA LINKED LIST==================================" << endl;
+    cout << "========================== selectionSort PARA LINKED LIST =============================" << endl;
     cout << "=======================================================================================" << endl;
     cout << "=======================================================================================" << endl;
     
-    Node* head_linkedlist = nullptr;
+    Node* head_linkedlist1 = nullptr;
     
     //Cria uma links list com 10.000 elementos random com valores de 0 até 1000000.
     for (int i = 0; i < 10000; i++) 
     {
-        insertEnd(&head_linkedlist, rand() % 1000000);
+        insertEnd(&head_linkedlist1, rand() % 10000);
     }
 
-    displayList(head_linkedlist);
+    displayList(head_linkedlist1);
     cout << "=================================================================================================================" << endl;
     
      //Começa a marcar o tempo te execução das "N" inserções de criação de nós na árvore (N=100).
     auto start_selectionSort = std::chrono::high_resolution_clock::now();
     
-    selectionSort(&head_linkedlist);
+    selectionSort(&head_linkedlist1);
     
     auto end_selectionSort = std::chrono::high_resolution_clock::now() - start_selectionSort;
     //Converte pra nanosegundos.
     long long resultado_selectionSortNano = std::chrono::duration_cast<std::chrono::nanoseconds>(end_selectionSort).count();
     
 
-    displayList(head_linkedlist);
+    displayList(head_linkedlist1);
     cout << "=================================================================================================================" << endl;
     cout << "Tempo de ordenação (selectionSort) em nanosegundos: " << resultado_selectionSortNano << endl;  
     cout << "=================================================================================================================" << endl;
+    
+    
+    cout << "=======================================================================================" << endl;
+    cout << "=======================================================================================" << endl;
+    cout << "=========================== bubbleSORT PARA LINKED LIST ===============================" << endl;
+    cout << "=======================================================================================" << endl;
+    cout << "=======================================================================================" << endl;
+    
+    
+    Node* head_linkedlist2 = nullptr;
+    
+    //Cria uma links list com 10.000 elementos random com valores de 0 até 1000000.
+    for (int i = 0; i < 10000; i++) 
+    {
+        insertEnd(&head_linkedlist2, rand() % 10000);
+    }
+
+    displayList(head_linkedlist2);
+    cout << "=================================================================================================================" << endl;
+    
+     //Começa a marcar o tempo te execução das "N" inserções de criação de nós na árvore (N=100).
+    auto start_bubbleSort = std::chrono::high_resolution_clock::now();
+    
+    bubbleSort(&head_linkedlist2);
+    
+    auto end_bubbleSort = std::chrono::high_resolution_clock::now() - start_bubbleSort;
+    //Converte pra nanosegundos.
+    long long resultado_bubbleSortNano = std::chrono::duration_cast<std::chrono::nanoseconds>(end_bubbleSort).count();
+    
+
+    displayList(head_linkedlist2);
+    cout << "=================================================================================================================" << endl;
+    cout << "Tempo de ordenação (bubbleSort) em nanosegundos: " << resultado_bubbleSortNano << endl;  
+    cout << "=================================================================================================================" << endl;
+    
     
     return 0;
 }

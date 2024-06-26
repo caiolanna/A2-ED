@@ -167,3 +167,73 @@ void selectionSort(Node** head)
     
     (*head) = sortedList;
 }
+
+
+//Troca valores dos nós.
+void swapNode(Node* Node_1, Node* Node_2)
+{
+    int temp = Node_1->iPayload;
+    Node_1->iPayload = Node_2->iPayload;
+    Node_2->iPayload = temp;
+}
+
+//Buble sort
+void bubbleSort(Node** head)
+{
+    if(*head == nullptr)
+    {
+        cout << "Lista vazia" << endl;
+        return;
+    }
+    
+    Node* listUnSorted = (*head);
+    
+    //Cria um ponteiro para marcar o fim da lista
+    while(listUnSorted ->ptrRight != nullptr)
+    {
+        listUnSorted = listUnSorted->ptrRight;
+    }
+    
+    for (Node* OutLoop = listUnSorted; OutLoop->ptrLeft != nullptr; OutLoop = OutLoop->ptrLeft)
+    {
+        for(Node* InnerLoop = *head; InnerLoop != OutLoop; InnerLoop = InnerLoop->ptrRight )
+        {
+            if(InnerLoop->iPayload >= InnerLoop->ptrRight->iPayload)
+            {
+                swapNode(InnerLoop, InnerLoop->ptrRight);
+            }
+        }
+    }
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
